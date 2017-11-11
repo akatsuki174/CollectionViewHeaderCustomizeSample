@@ -51,7 +51,11 @@ extension ViewController {
 extension ViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: self.view.bounds.width, height: 30)
+        if section == 1 {
+            return CGSize.zero
+        } else {
+            return CGSize(width: self.view.bounds.width, height: 30)
+        }
     }
 
 }
