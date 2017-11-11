@@ -4,6 +4,8 @@ final class ViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let fl = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        fl.sectionHeadersPinToVisibleBounds = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,7 +31,7 @@ extension ViewController {
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return 10
     }
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
