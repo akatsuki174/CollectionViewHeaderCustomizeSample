@@ -4,7 +4,6 @@ final class ViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,4 +30,19 @@ extension ViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
     }
+
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SectionHeader", for: indexPath) as? SectionHeader else {
+            fatalError("Could not find proper header")
+        }
+
+        if kind == UICollectionElementKindSectionHeader {
+            header.sectionLabel.text = "section \(indexPath.section)"
+            return header
+        }
+
+        return UICollectionReusableView()
+    }
+
 }

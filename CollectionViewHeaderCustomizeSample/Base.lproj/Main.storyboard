@@ -19,13 +19,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JX7-E4-UV1">
                             <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="weq-l9-nJi">
-                                <rect key="frame" x="5" y="5" width="50" height="50"/>
+                                <rect key="frame" x="5" y="55" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -34,6 +34,27 @@
                                 <color key="backgroundColor" red="0.832275390625" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionHeader" id="xfx-RG-SMO" customClass="SectionHeader" customModule="CollectionViewHeaderCustomizeSample" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOr-2F-lH5">
+                                    <rect key="frame" x="10" y="15" width="42" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.832275390625" green="0.93296983506944442" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cOr-2F-lH5" secondAttribute="trailing" constant="20" symbolic="YES" id="Qvc-hf-HZX"/>
+                                <constraint firstItem="cOr-2F-lH5" firstAttribute="leading" secondItem="xfx-RG-SMO" secondAttribute="leading" constant="10" id="neC-Xq-aDE"/>
+                                <constraint firstItem="cOr-2F-lH5" firstAttribute="centerY" secondItem="xfx-RG-SMO" secondAttribute="centerY" id="oiu-Cx-twb"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="sectionLabel" destination="cOr-2F-lH5" id="tse-kl-hnH"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="IEe-Lc-YsS" id="sCY-1D-h3u"/>
                             <outlet property="delegate" destination="IEe-Lc-YsS" id="u8e-5H-bUh"/>
