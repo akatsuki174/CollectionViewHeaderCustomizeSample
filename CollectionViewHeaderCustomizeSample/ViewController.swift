@@ -16,6 +16,7 @@ final class ViewController: UICollectionViewController {
 // MARK: datasorce, delegate
 
 extension ViewController {
+
     override func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
 
@@ -43,6 +44,14 @@ extension ViewController {
         }
 
         return UICollectionReusableView()
+    }
+
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: self.view.bounds.width, height: 30)
     }
 
 }
