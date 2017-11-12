@@ -38,19 +38,17 @@ extension ViewController {
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 
-        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SectionHeader", for: indexPath) as? SectionHeader else {
-            fatalError("Could not find proper header")
-        }
-
-        guard let xibHeader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: XibHeader.identifier, for: indexPath) as? XibHeader else {
-            fatalError("Could not find proper header")
-        }
-
         if kind == UICollectionElementKindSectionHeader {
             if indexPath.section == 0 || indexPath.section == 4 {
+                guard let xibHeader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: XibHeader.identifier, for: indexPath) as? XibHeader else {
+                    fatalError("Could not find proper header")
+                }
                 xibHeader.sectionLabel.text = "section \(indexPath.section)"
                 return xibHeader
             } else {
+                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SectionHeader", for: indexPath) as? SectionHeader else {
+                    fatalError("Could not find proper header")
+                }
                 header.sectionLabel.text = "section \(indexPath.section)"
                 return header
             }
