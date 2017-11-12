@@ -6,6 +6,8 @@ final class ViewController: UICollectionViewController {
         super.viewDidLoad()
         guard let fl = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else { return }
         fl.sectionHeadersPinToVisibleBounds = true
+        //fl.headerReferenceSize = CGSize(width: self.view.bounds.width, height: 30)
+        collectionView?.register(XibHeader.nib(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: XibHeader.identifier)
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,9 +42,18 @@ extension ViewController {
             fatalError("Could not find proper header")
         }
 
+        guard let xibHeader = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: XibHeader.identifier, for: indexPath) as? XibHeader else {
+            fatalError("Could not find proper header")
+        }
+
         if kind == UICollectionElementKindSectionHeader {
-            header.sectionLabel.text = "section \(indexPath.section)"
-            return header
+            if indexPath.section == 0 || indexPath.section == 4 {
+                xibHeader.sectionLabel.text = "section \(indexPath.section)"
+                return xibHeader
+            } else {
+                header.sectionLabel.text = "section \(indexPath.section)"
+                return header
+            }
         }
 
         return UICollectionReusableView()
